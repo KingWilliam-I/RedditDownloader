@@ -20,7 +20,7 @@ import logging
 
 parser = argparse.ArgumentParser(
 	description="Tool for scanning Reddit and downloading media - Guide @ https://goo.gl/hgBxN4")
-parser.add_argument("--settings", help="Path to custom Settings file.", type=str, metavar='', default=None)
+parser.add_argument("--settings", help="Path to custom Settings file.", type=str, metavar='', default=None)		# This may be relevant to saving manifest.sqlite to a new location.
 parser.add_argument("--source", '-s',
 					help="Run each configured Source only if its alias matches the given pattern. Can pass multiple patterns.",
 					type=str, action='append', metavar='')

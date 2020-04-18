@@ -55,7 +55,8 @@ def init(db_path=":memory:"):
 
 def init_from_settings():
 	""" Builds the database file using the Settings currently loaded. """
-	db_file = SanitizedRelFile(base=settings.get("output.base_dir"), file_path="manifest.sqlite")
+	# db_file = SanitizedRelFile(base=settings.get("output.base_dir"), file_path="manifest.sqlite")  # original
+	db_file = SanitizedRelFile(base=settings.get("output.manifest_for_sqlite_dir"), file_path="manifest.sqlite")	# This is part of the change to save manifest.sqlite to a different directory than the downloads
 	db_file.mkdirs()
 	init(db_file.absolute())
 
