@@ -160,19 +160,19 @@ class SQLDBManifest:
 
 
 class Converter:
-	# def __init__(self, new_save_base=None, settings_file=None, manifest_gz=None, og_base_dir_path=None, sqlite_path=None):
-	def __init__(self, new_save_base=None, settings_file=None, manifest_gz=None, og_base_dir_path=None, og_manifest_for_sqlite_dir_path=None, sqlite_path=None):		# This is part of the change to save manifest.sqlite to a different directory than the downloads
+	def __init__(self, new_save_base=None, settings_file=None, manifest_gz=None, og_base_dir_path=None, sqlite_path=None):
+	# def __init__(self, new_save_base=None, settings_file=None, manifest_gz=None, og_base_dir_path=None, og_manifest_for_sqlite_dir_path=None, sqlite_path=None):		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 		self.posts = {}
 		self.new_save_base = os.path.abspath(new_save_base)
 		self.settings_file = settings_file
 		self.manifest_gz = manifest_gz
 		self.og_base_dir_path = os.path.abspath(og_base_dir_path)
-		self.og_manifest_for_sqlite_dir_path = os.path.abspath(og_manifest_for_sqlite_dir_path)		# This is part of the change to save manifest.sqlite to a different directory than the downloads
+		# self.og_manifest_for_sqlite_dir_path = os.path.abspath(og_manifest_for_sqlite_dir_path)		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 		self.sqlite_path = os.path.abspath(sqlite_path) if sqlite_path else None
-		# if os.path.normpath(self.new_save_base) == os.path.normpath(og_base_dir_path):			# This is part of the change to save manifest.sqlite to a different directory than the downloads (start two replaced lines)
-		#	raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")	# (end two replaced lines)
-		if os.path.normpath(self.new_save_manifest_for_sqlite_dir) == os.path.normpath(og_manifest_for_sqlite_dir_path):	# This is part of the change to save manifest.sqlite to a different directory than the downloads (start two replacement lines)
-			raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")							# (end two replacement lines)
+		if os.path.normpath(self.new_save_base) == os.path.normpath(og_base_dir_path):			# This is part of the change to save manifest.sqlite to a different directory than the downloads (start two replaced lines)
+			raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")	# (end two replaced lines)
+		#if os.path.normpath(self.new_save_manifest_for_sqlite_dir) == os.path.normpath(og_manifest_for_sqlite_dir_path):	# This is part of the change to save manifest.sqlite to a different directory than the downloads (start two replacement lines)
+			#raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")							# (end two replacement lines)
 		# internal:
 		self.session = None
 		self.gz = None
