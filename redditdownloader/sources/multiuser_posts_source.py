@@ -4,6 +4,7 @@ from static.settings import Setting
 
 # copied and altered from user_posts_source.py
 # TODO: change from getting posts from one user to the intended multiuser
+#		may need to change get_config_summary
 
 # Is there another file that deals with the types entered into the sourde fields?
 class MultiuserPostsSource(source.Source):
@@ -29,7 +30,7 @@ class MultiuserPostsSource(source.Source):
 		yield Setting('scan_comments', False, etype='bool', desc='Scan their comments?')
 		yield Setting('scan_submissions', False, etype='bool', desc='Scan their submissions?')
 
-	def get_config_summary(self):
+	def get_config_summary(self):	# may need to make more like in subreddit_posts_source.py
 		feeds = ""
 		if self.data['scan_comments']:
 			feeds += "Comments"

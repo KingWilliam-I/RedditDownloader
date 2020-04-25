@@ -7,13 +7,23 @@ class UserPostsSource(source.Source):
 	def __init__(self):
 		super().__init__(source_type='user-posts-source', description="A User's Submission and/or Comment history.")
 
-	def get_elements(self):
+	'''def get_elements(self):
 		for re in reddit.user_posts(
 				username=self.data['user'],
 				find_submissions=self.data['scan_submissions'],
 				find_comments=self.data['scan_comments']):
 			if self.check_filters(re):
-				yield re
+				yield re'''
+
+
+	def get_elements(self):
+		for user in self.data['users'].split(','):
+			for re in reddit.user_posts(
+					username=self.data['user'],
+					find_submissions=self.data['scan_submissions'],
+					find_comments=self.data['scan_comments']):
+				if self.check_filters(re):
+					yield re
 
 	def get_settings(self):
 		yield Setting('user', '', etype='str', desc='Target username:')
