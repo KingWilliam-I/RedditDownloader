@@ -216,6 +216,7 @@ add("auth", Setting("user_agent", 'RMD-Scanner-%s' % uuid.uuid4(), desc="The use
 add("auth", Setting("oauth_key", str(uuid.uuid4()), desc="Internal key.", public=False))
 
 add("output", Setting("base_dir", os.path.join(os.getcwd(), 'download'), desc="The base directory to save to. Cannot contain tags."))
+add("output", Setting("manifest_for_sqlite_dir", os.path.join(os.getcwd(), 'download'), desc="The directory to save manifest.sqlite to. Cannot contain tags."))
 add("output", Setting("file_name_pattern", '[subreddit]/[title] - ([author])', desc="The ouput file name/path. Supports tags."))
 
 add("processing", Setting("deduplicate_files", True, desc="Remove downloaded files if another copy already exists. Also compares images for visual similarity.", etype="bool"))
