@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-0
 import argparse
 import multiprocessing
 import sys
