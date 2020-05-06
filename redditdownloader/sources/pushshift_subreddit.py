@@ -31,6 +31,7 @@ class PushShiftSubmissionSource(source.Source):
 		yield Setting("time", 'All Time', desc='Select a time span to filter by:', etype="str", opts=[('All Time', 'All posts ever made'), ('Day', 'Posts with the last 24hrs'), ('Week', 'Posts within the last 7 days'), ('Month', "Posts within the last 31 days"), ('Year', 'Posts within the last 365 days')])
 		yield Setting("sort_by", 'score', desc="Sort results by:", etype="str", opts=[('score', 'Sort by highest score'), ('created_utc', 'The datetime the Submission was created')])
 		yield Setting("sort_order", 'Descending', desc="Sort order:", etype="str", opts=[('Descending', 'Descending order'), ('Ascending', "Ascending order")])
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):
 		lim = self.data['limit']

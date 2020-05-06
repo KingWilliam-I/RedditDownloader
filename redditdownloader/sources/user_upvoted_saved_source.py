@@ -27,6 +27,7 @@ class UserUpvotedSaved(source.Source):
 		yield Setting('scan_saved', False, etype='bool', desc='Scan the posts they\'ve saved?')
 		yield Setting('scan_sub', '',
 					  etype='str', desc='Optionally scan specific subreddits, separated by commas (leave blank for all):')
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):
 		feeds = ""

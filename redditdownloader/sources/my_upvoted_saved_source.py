@@ -1,5 +1,6 @@
 from sources import source
 import static.praw_wrapper as reddit
+from static.settings import Setting
 
 
 class UpvotedSaved(source.Source):
@@ -13,6 +14,7 @@ class UpvotedSaved(source.Source):
 				yield ele
 
 	def get_settings(self):  # !cover
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 		return []
 
 	def get_config_summary(self):  # !cover

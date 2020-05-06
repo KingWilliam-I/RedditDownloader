@@ -26,6 +26,7 @@ class PushShiftSearchSource(source.Source):
 		yield Setting('search_term', '', etype='str', desc='The term to search for:')
 		yield Setting('subreddits', '', etype='str', desc='Optionally limit the search to specific subreddit(s), separated by commas:')
 		yield Setting('limit', 1000, etype='int', desc='How many would you like to download per-subreddit? (0 for no limit):')
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):
 		lim = self.data['limit']

@@ -1,6 +1,6 @@
 import sources
 from sources.source import Source
-
+from static.settings import Setting
 
 class DirectInputSource(Source):
 	def __init__(self, txt=None, args=None):
@@ -28,6 +28,9 @@ class DirectInputSource(Source):
 
 		for p in self.src.get_elements():
 			yield p
+
+	def get_settings(self):
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def _sanitize(self, tag, txt):
 		return txt.replace('/%s/' % tag, '').replace('%s/' % tag, '').strip('/')

@@ -19,6 +19,7 @@ class UserPostsSource(source.Source):
 		yield Setting('user', '', etype='str', desc='Target username:')
 		yield Setting('scan_comments', False, etype='bool', desc='Scan their comments?')
 		yield Setting('scan_submissions', False, etype='bool', desc='Scan their submissions?')
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):
 		feeds = ""

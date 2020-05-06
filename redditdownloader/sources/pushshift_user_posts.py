@@ -36,6 +36,7 @@ class PushShiftUserSourceSource(source.Source):
 		yield Setting('limit', 1000, etype='int', desc='How many would you like to download from each? (0 for no limit):')
 		yield Setting('scan_comments', False, etype='bool', desc='Scan their comments (very slow)?')
 		yield Setting('scan_submissions', True, etype='bool', desc='Scan their submissions?')
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):
 		lim = self.data['limit']

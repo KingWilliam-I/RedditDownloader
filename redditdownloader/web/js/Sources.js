@@ -177,7 +177,7 @@ class Source extends React.Component {
 				<summary>
 					{this.state.alias ? this.state.alias : '[blank]'}
 					<span onClick={(e)=>{e.preventDefault(); this.props.delete(this.state.alias)}} className={'source_delete'} title="Delete this Source.">&#10006;</span>
-				</summary>
+			</summary>
 				<div className='description'>{this.state.description}</div>
 				<SourceSettingsGroup name={this.state.alias} type={this.state.type} list={this.state.settings} change={this._change}/>
 				<SourceFilterGroup filters={this.state.filters} change={this._changeFilters} filterOptions={this.props.filterOptions}/>

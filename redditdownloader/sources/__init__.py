@@ -27,7 +27,7 @@ def all_sources():
 
 def load_sources(source_list=None):
 	"""
-	Get a list of all availale Sources.
+	Get a list of all available Sources.
 
 	Expects that source_list is the direct array of Sources loaded from settings.
 	"""

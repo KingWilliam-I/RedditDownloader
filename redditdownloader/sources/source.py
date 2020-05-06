@@ -34,7 +34,7 @@ class Source:
 		pass
 
 	def get_config_summary(self):
-		""" Override this method to print out a user-friendly string descriping this Source's current configuration. """
+		""" Override this method to print out a user-friendly string describing this Source's current configuration. """
 		return "No status"
 
 	def get_settings(self):

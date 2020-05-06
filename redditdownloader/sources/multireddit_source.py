@@ -19,6 +19,7 @@ class MultiRedditSource(source.Source):
 		yield Setting('order', None, etype='str', desc='Order submissions by:', opts=reddit.post_orders())
 		yield Setting('time', None, etype='str', desc='Select a time span to filter by:', opts=reddit.time_filters())
 		yield Setting('limit', 0, etype='int', desc='How many would you like to download? (0 for no limit):')
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):
 		lim = self.data['limit']
