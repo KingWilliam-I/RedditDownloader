@@ -1,0 +1,7 @@
+This document is to help find and clean up old comments via CTRL-F, it is to be deleted before the final push.
+
+# original
+# This is part of the change to save manifest.sqlite to a different directory than the downloads
+# This may be relevant to saving manifest.sqlite to a new location.
+# # may need to make more like in subreddit_posts_source.py
+

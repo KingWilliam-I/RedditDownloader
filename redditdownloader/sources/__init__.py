@@ -9,6 +9,7 @@ from sources.pushshift_subreddit import PushShiftSubmissionSource
 from sources.pushshift_user_posts import PushShiftUserSourceSource
 from sources.direct_input_source import DirectInputSource
 from sources.pushshift_search_source import PushShiftSearchSource
+# from sources.multiuser_posts_source.py import MultiuserPostsSource
 
 
 def all_sources():
@@ -18,6 +19,7 @@ def all_sources():
 		UpvotedSaved(),
 		SubredditPostsSource(),
 		UserPostsSource(),
+#		MultiuserPostsSource(),
 		UserUpvotedSaved(),
 		PushShiftSubmissionSource(),
 		PushShiftUserSourceSource(),

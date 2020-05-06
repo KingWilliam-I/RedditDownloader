@@ -161,14 +161,18 @@ class SQLDBManifest:
 
 class Converter:
 	def __init__(self, new_save_base=None, settings_file=None, manifest_gz=None, og_base_dir_path=None, sqlite_path=None):
+	# def __init__(self, new_save_base=None, settings_file=None, manifest_gz=None, og_base_dir_path=None, og_manifest_for_sqlite_dir_path=None, sqlite_path=None):		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 		self.posts = {}
 		self.new_save_base = os.path.abspath(new_save_base)
 		self.settings_file = settings_file
 		self.manifest_gz = manifest_gz
 		self.og_base_dir_path = os.path.abspath(og_base_dir_path)
+		# self.og_manifest_for_sqlite_dir_path = os.path.abspath(og_manifest_for_sqlite_dir_path)		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 		self.sqlite_path = os.path.abspath(sqlite_path) if sqlite_path else None
-		if os.path.normpath(self.new_save_base) == os.path.normpath(og_base_dir_path):
-			raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")
+		if os.path.normpath(self.new_save_base) == os.path.normpath(og_base_dir_path):			# This is part of the change to save manifest.sqlite to a different directory than the downloads (start two replaced lines)
+			raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")	# (end two replaced lines)
+		#if os.path.normpath(self.new_save_manifest_for_sqlite_dir) == os.path.normpath(og_manifest_for_sqlite_dir_path):	# This is part of the change to save manifest.sqlite to a different directory than the downloads (start two replacement lines)
+			#raise Exception("ERROR: You must specify a NEW directory to save the converted Posts!")							# (end two replacement lines)
 		# internal:
 		self.session = None
 		self.gz = None
@@ -355,10 +359,13 @@ if __name__ == '__main__':
 	opts = {
 		'new_save_base': arg_or_input(args.new_save_dir, "Enter the new directory (absolute) for RMD to save in"),
 		'settings_file': arg_or_input(args.settings, "Enter the absolute path to your settings.json file"),
-		'og_base_dir_path': arg_or_input(args.og_base_dir_path, "Enter the absolute path to the directory RMD was saving in"),
+		# 'og_base_dir_path': arg_or_input(args.og_base_dir_path, "Enter the absolute path to the directory RMD was saving in"),
+		'og_manifest_for_sqlite_dir_path': arg_or_input(args.og_base_dir_path, "Enter the absolute path to the directory RMD was saving in"),		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 	}
-	path_gz = os.path.join(opts['og_base_dir_path'], 'Manifest.json.gz')
-	path_sql = os.path.join(opts['og_base_dir_path'], 'manifest.sqldb')
+	# path_gz = os.path.join(opts['og_base_dir_path'], 'Manifest.json.gz')
+	path_gz = os.path.join(opts['og_manifest_for_sqlite_dir_path'], 'Manifest.json.gz')		# This is part of the change to save manifest.sqlite to a different directory than the downloads
+	# path_sql = os.path.join(opts['og_base_dir_path'], 'manifest.sqldb')
+	path_sql = os.path.join(opts['og_manifest_for_sqlite_dir_path'], 'manifest.sqldb')		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 	check_gz = os.path.isfile(path_gz)
 	check_sql = os.path.isfile(path_sql)
 	if check_gz and console.confirm('Detected a "Manifest.json.gz" file (from RMD <2.0) - do you want to convert this?', default=True):

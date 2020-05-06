@@ -22,7 +22,8 @@ class WebUIDownloadTest(EnvironmentTest):
 		if not download_ran:
 			download_ran = True
 			self.wui = WebUI('test_version')
-			self.db_path = join(settings.get('output.base_dir'), 'manifest.sqlite')
+			# self.db_path = join(settings.get('output.base_dir'), 'manifest.sqlite')     
+			self.db_path = join(settings.get('output.base_dir'), 'manifest.sqlite')     # This is part of the change to save manifest.sqlite to a different directory than the downloads
 			self.url = 'http://%s:%s/index.html#' % (settings.get('interface.host'), settings.get('interface.port'))
 
 			settings.load(self.settings_file)

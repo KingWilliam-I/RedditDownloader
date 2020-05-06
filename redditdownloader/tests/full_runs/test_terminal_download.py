@@ -21,7 +21,8 @@ class TerminalDownloadTest(EnvironmentTest):
 			settings.load(self.settings_file)
 			tui = TerminalUI()
 			tui.display()
-			self.db_path = join(settings.get('output.base_dir'), 'manifest.sqlite')
+			# self.db_path = join(settings.get('output.base_dir'), 'manifest.sqlite')
+			self.db_path = join(settings.get('output.manifest_for_sqlite_dir'), 'manifest.sqlite')		# This is part of the change to save manifest.sqlite to a different directory than the downloads
 			sql.init_from_settings()
 			session = sql.session()
 
