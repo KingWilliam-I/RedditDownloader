@@ -12,6 +12,9 @@ class FrontpagePostsSource(source.Source):
 			if self.check_filters(p):
 				yield p
 
+		if self.data['source_check'] is True:
+			source.add_source_list(FrontpagePostsSource())
+
 	def get_settings(self):
 		yield Setting('order', None, etype='str', desc='Order submissions by:', opts=reddit.post_orders())
 		yield Setting('time', None, etype='str', desc='Select a time span to filter by:', opts=reddit.time_filters())

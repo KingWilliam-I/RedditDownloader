@@ -21,6 +21,8 @@ class PushShiftSearchSource(source.Source):
 				p = RedditElement(post)
 				if self.check_filters(p):
 					yield p
+		if self.data['source_check'] is True:
+			source.add_source_list(PushShiftSearchSource())
 
 	def get_settings(self):
 		yield Setting('search_term', '', etype='str', desc='The term to search for:')

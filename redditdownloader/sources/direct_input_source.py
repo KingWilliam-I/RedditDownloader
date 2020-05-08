@@ -1,8 +1,8 @@
-import sources
-from sources.source import Source, source_list
+from sources import source
 from static.settings import Setting
 
-class DirectInputSource(Source):
+
+class DirectInputSource(source):
 	def __init__(self, txt=None, args=None):
 		super().__init__(source_type='direct-input-source', description="Entered on the command line, for direct downloading.")
 		self.set_alias('direct')
@@ -14,11 +14,11 @@ class DirectInputSource(Source):
 		txt = self.data['txt']
 		args = self.data['args']
 		if 'u/' in txt:
-			self.src = sources.PushShiftUserSourceSource()
+			self.src = source.PushShiftUserSourceSource()
 			args['users'] = self._sanitize('u', txt)
 
 		if 'r/' in txt:
-			self.src = sources.PushShiftSubmissionSource()
+			self.src = source.PushShiftSubmissionSource()
 			args['subreddit'] = self._sanitize('r', txt)
 
 		for s in self.src.get_settings():
@@ -30,7 +30,7 @@ class DirectInputSource(Source):
 			yield p
 
 		if self.data['source_check']:
-			source_list.append(DirectInputSource())
+			source.add_source_list(DirectInputSource())
 
 	def get_settings(self):
 		yield Setting('source_check', False, etype='bool', desc='Use this source?')

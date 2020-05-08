@@ -1,4 +1,4 @@
-from sources import source, source_list
+from sources import source
 from psaw import PushshiftAPI
 from static.settings import Setting
 from processing.wrappers.redditelement import RedditElement
@@ -25,7 +25,7 @@ class PushShiftSubmissionSource(source.Source):
 				if self.check_filters(p):
 					yield p
 		if self.data['source_check']:
-			source_list.append(PushShiftSubmissionSource())
+			source.add_source_list(PushShiftSubmissionSource())
 
 	def get_settings(self):
 		yield Setting('subreddit', '', etype='str', desc='Name of the desired subreddit(s), separated by commas:')

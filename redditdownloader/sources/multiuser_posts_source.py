@@ -12,23 +12,22 @@ class MultiuserPostsSource(source.Source):
 		super().__init__(source_type='multiuser-posts-source', description="Multiple Users' Submission and/or Comment histories.")
 
 	def get_elements(self):
-            for user in self.data['users'].split(','):
-                for re in reddit.user_posts(
-                        username=self.data['users'],
-                        find_submissions=self.data['scan_submissions'],
-                        find_comments=self.data['scan_comments']):
-                    if self.check_filters(re):
-                        yield re
+		for user in self.data['users'].split(','):
+			for re in reddit.user_posts(
+					username=self.data['users'],
+					find_submissions=self.data['scan_submissions'],
+					find_comments=self.data['scan_comments']):
+				if self.check_filters(re):
+					yield re
 
-
-
-
-
+		if self.data['source_check'] is True:
+			source.add_source_list(MultiuserPostsSource())
 
 	def get_settings(self):
 		yield Setting('users', '', etype='str', desc='Target usernames:')
 		yield Setting('scan_comments', False, etype='bool', desc='Scan their comments?')
 		yield Setting('scan_submissions', False, etype='bool', desc='Scan their submissions?')
+		yield Setting('source_check', False, etype='bool', desc='Use this source?')
 
 	def get_config_summary(self):	# may need to make more like in subreddit_posts_source.py
 		feeds = ""
