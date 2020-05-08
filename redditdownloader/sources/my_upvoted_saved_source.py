@@ -1,4 +1,4 @@
-from sources import source
+from sources import source, source_list
 import static.praw_wrapper as reddit
 from static.settings import Setting
 
@@ -12,6 +12,8 @@ class UpvotedSaved(source.Source):
 		for ele in reddit.my_liked_saved():
 			if self.check_filters(ele):
 				yield ele
+		if self.data['source_check']:
+			source_list.append(UpvotedSaved())
 
 	def get_settings(self):  # !cover
 		yield Setting('source_check', False, etype='bool', desc='Use this source?')

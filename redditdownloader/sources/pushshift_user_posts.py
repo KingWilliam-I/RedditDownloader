@@ -1,4 +1,4 @@
-from sources import source
+from sources import source, source_list
 from psaw import PushshiftAPI
 from static.settings import Setting
 from processing.wrappers.redditelement import RedditElement
@@ -30,6 +30,8 @@ class PushShiftUserSourceSource(source.Source):
 					p = RedditElement(post, ext_submission_obj=submission)
 					if self.check_filters(p):
 						yield p
+			if self.data['source_check']:
+				source_list.append(PushShiftUserSourceSource())
 
 	def get_settings(self):
 		yield Setting('users', '', etype='str', desc='Name of the desired user account(s), separated by commas:')

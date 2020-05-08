@@ -1,4 +1,4 @@
-from sources import source
+from sources import source, source_list
 import static.praw_wrapper as reddit
 from static.settings import Setting
 
@@ -24,6 +24,8 @@ class UserPostsSource(source.Source):
 					find_comments=self.data['scan_comments']):
 				if self.check_filters(re):
 					yield re
+				if self.data['source_check']:
+					source_list.append(UserPostsSource())
 
 	def get_settings(self):
 		yield Setting('user', '', etype='str', desc='Target username:')

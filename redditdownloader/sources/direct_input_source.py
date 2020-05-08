@@ -1,5 +1,5 @@
 import sources
-from sources.source import Source
+from sources.source import Source, source_list
 from static.settings import Setting
 
 class DirectInputSource(Source):
@@ -28,6 +28,9 @@ class DirectInputSource(Source):
 
 		for p in self.src.get_elements():
 			yield p
+
+		if self.data['source_check']:
+			source_list.append(DirectInputSource())
 
 	def get_settings(self):
 		yield Setting('source_check', False, etype='bool', desc='Use this source?')

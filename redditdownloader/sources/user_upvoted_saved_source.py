@@ -1,4 +1,4 @@
-from sources import source
+from sources import source, source_list
 import static.praw_wrapper as reddit
 from static.settings import Setting
 
@@ -14,12 +14,16 @@ class UserUpvotedSaved(source.Source):
 			for ele in reddit.user_liked_saved(dat['user'], dat['scan_upvoted'], dat['scan_saved']):
 				if self.check_filters(ele):
 					yield ele
+
 		else:
 			for sub in dat['scan_sub'].split(','):
 				sub = sub.strip()
 				for ele in reddit.user_liked_saved(dat['user'], dat['scan_upvoted'], dat['scan_saved'], sub):
 					if self.check_filters(ele):
 						yield ele
+
+		if self.data['source_check']:
+			source_list.append(UserUpvotedSaved())
 
 	def get_settings(self):
 		yield Setting('user', '', etype='str', desc='Target username:')
