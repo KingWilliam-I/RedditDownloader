@@ -114,3 +114,10 @@ class Source:
 
 	def __repr__(self):
 		return "(Source: %s :: %s)" % (self.type, self.get_config_summary())
+
+	def add_source_list(self):
+		if source_list:
+			source_list.append(self)
+		else:
+			global source_list
+			source_list = []
