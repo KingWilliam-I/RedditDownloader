@@ -11,6 +11,7 @@ from processing.wrappers import SanitizedRelFile
 from processing.controller import RMDController
 import sql
 
+
 """
 	Eel is great, but doesn't expose everything we want.
 	So by locking Eel to specific versions, we can easily override whatever we need here.
@@ -286,6 +287,20 @@ def start_download():
 		_stat_cache = None
 		print('Started downloader.')
 		return True
+
+
+@eel.expose
+def stop_download():
+	global _controller, _stat_cache
+	if _controller is None or not _controller.is_running():
+		return False
+	else:
+		# Clear the manifest database
+		path = sql.get_path()
+		print(path)
+        open(path, 'w').close()
+        print("Stopped downloader.")
+        return True
 
 
 @eel.expose

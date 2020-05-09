@@ -84,6 +84,11 @@ def close():
 	_Session.close()
 
 
+def get_path():
+	global _db_path
+	return _db_path
+
+
 class make_backup(object):
 	""" Context handler, creates backup file that is deleted on close, or reverted on Exception. """
 	def __init__(self, original_path):
