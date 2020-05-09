@@ -10,6 +10,7 @@ from interfaces import UserInterface
 from processing.wrappers import SanitizedRelFile
 from processing.controller import RMDController
 import sql
+import sqlite3
 
 
 """
@@ -298,7 +299,11 @@ def stop_download():
 		# Clear the manifest database
 		path = sql.get_path()
 		print(path)
-        open(path, 'w').close()
+        _controller.stop()
+        conn = sqlite3.connect(path)
+        curse = conn.cursor()
+        curse.execute('''DELETE FROM urls''')
+        conn.commit()
         print("Stopped downloader.")
         return True
 
